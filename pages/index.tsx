@@ -33,8 +33,8 @@ const IndexPage = () => {
           Log In
         </Button>
 
-        <Button onClick={toggleColorMode}>
-          <MoonIcon w={7} h={7} color="dark" />
+        <Button onClick={toggleColorMode} alignSelf="flex-end">
+          <MoonIcon w={7} h={7} color="red" />
         </Button>
       
       </Flex>
