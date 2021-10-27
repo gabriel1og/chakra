@@ -1,9 +1,11 @@
-import { Heading, Grid, Flex, Link, Button, Text } from '@chakra-ui/react'
+import { Heading, Grid, Flex, Link, Button, Text, InputLeftElement, InputGroup } from '@chakra-ui/react'
 import Divider from '../components/Divider'
 import Input from '../components/Input'
 import { useColorMode, useColorModeValue } from "@chakra-ui/color-mode";
 import { IconButton } from '@chakra-ui/button';
-import { FaMoon, FaSun } from "react-icons/fa";
+import { FaMoon, FaSun, FaUser } from "react-icons/fa";
+import React from 'react';
+import { EmailIcon } from '@chakra-ui/icons';
 
 
 export default function Home() {
@@ -28,9 +30,9 @@ export default function Home() {
 
       <Flex w={["50%","50%","60%","40%"]} display={['none', 'flex', 'flex', 'flex']} justifyContent="flex-end" alignItems="center" >
         <Flex flexDir="column" justifyContent="center" alignItems="center">
-          <img src="/Logo-Monograma (Branco).png" alt="logomarca" width="70%"/>
+          <img src="/Logo-Monograma (Branco).png" alt="logomarca" width="60%"/>
           <Divider />
-          <img src="Ícone (Branco).png"  alt="logomarca" width="15%"/>
+          <img src="Ícone (Branco).png"  alt="logomarca" width="10%"/>
         </Flex>
       </Flex>
 
@@ -68,23 +70,37 @@ export default function Home() {
         <Text color="#92f7b6" mb={4} display="flex" justifyContent="center">_________</Text>
 
 
+        <InputGroup mt={8} _hover={{ borderColor: "green.300" }}>
+          <InputLeftElement
+            pointerEvents="none"
+            mt={1.5}
+            color="gray.400"
+            children={<FaUser />}
+          />
+          <Input
+            placeholder="E-mail *"
+            pl={10}
+            type="text"
+            color="gray.400"
+            _hover={{ borderColor: "green.400" }}
+          />
+        </InputGroup>
 
-        <Input
-          placeholder="E-mail"
-          type="email"
-          color="gray.400"
-          mt={8}
-          _hover={{ borderColor: 'green.300'}}
-        />
-
-        <Input
-          placeholder="Senha"
-          type="password"
-          color="gray.400"
-          mt={1.5}
-          _hover={{ borderColor: 'green.300'}}
-     
-        />
+        <InputGroup mt={1.5} _hover={{ borderColor: "green.300" }}>
+          <InputLeftElement
+            pointerEvents="none"
+            mt={1.5}
+            color="gray.400"
+            children={<EmailIcon />}
+          />
+          <Input
+            placeholder="Senha *"
+            pl={10}
+            type="email"
+            color="gray.400"
+            _hover={{ borderColor: "green.400" }}
+          />
+        </InputGroup>
 
         <Link
           alignSelf="flex-start"
