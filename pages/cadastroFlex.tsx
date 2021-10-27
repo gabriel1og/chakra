@@ -3,7 +3,7 @@ import Divider from '../components/Divider'
 import Input from '../components/Input'
 import { useColorMode, useColorModeValue } from "@chakra-ui/color-mode";
 import { IconButton } from '@chakra-ui/button';
-import { FaCalendar, FaCalendarAlt, FaMailchimp, FaMoon, FaUserAlt, FaPhone, FaRegCalendarAlt, FaSun, FaVoicemail, FaUser } from "react-icons/fa";
+import { FaCalendar, FaCalendarAlt, FaMailchimp, FaMoon, FaUserAlt, FaPhone, FaRegCalendarAlt, FaSun, FaVoicemail, FaUser, FaLock, FaUnlock, FaEye, FaEyeDropper, FaEyeSlash } from "react-icons/fa";
 import React from 'react';
 import { EmailIcon } from '@chakra-ui/icons'
 
@@ -88,9 +88,15 @@ export default function Home() {
             pointerEvents="none"
             mt={1.5}
             color="gray.400"
-            children={<FaUser/>}
+            children={<FaUser />}
           />
-          <Input placeholder="Usuário *" pl={10} type="text" color="gray.400" _hover={{ borderColor: "green.400" }}/>
+          <Input
+            placeholder="Usuário *"
+            pl={10}
+            type="text"
+            color="gray.400"
+            _hover={{ borderColor: "green.400" }}
+          />
         </InputGroup>
 
         <InputGroup mt={1} _hover={{ borderColor: "green.300" }}>
@@ -98,28 +104,48 @@ export default function Home() {
             pointerEvents="none"
             mt={1.5}
             color="gray.400"
-            children={<EmailIcon/>}
+            children={<EmailIcon />}
           />
-          <Input placeholder="E-mail *" pl={10} type="email" color="gray.400" _hover={{ borderColor: "green.400" }}/>
+          <Input
+            placeholder="E-mail *"
+            pl={10}
+            type="email"
+            color="gray.400"
+            _hover={{ borderColor: "green.400" }}
+          />
         </InputGroup>
 
-        <Input
-         size="md" 
-         mt={4}
-         type={show ? "text" : "password"}
-         placeholder="Senha *"
-         _hover={{ borderColor: "green.400" }}
-        />
-        
-        <Input
-         size="md" 
-         mt={1}
-         fontSize="md"
-         type={show ? "text" : "password"}
-         placeholder="Confirmar senha *"
-         _hover={{ borderColor: "green.400" }}
-        />
-    
+        <InputGroup mt={4} _hover={{ borderColor: "green.300" }}>
+          <InputLeftElement
+            pointerEvents="none"
+            mt={1.5}
+            color="gray.400"
+            children={<FaUnlock />}
+          />
+          <Input
+            size="md"
+            pl={10}
+            type={show ? "text" : "password"}
+            placeholder="Senha *"
+            _hover={{ borderColor: "green.400" }}
+          />
+        </InputGroup>
+
+        <InputGroup mt={1} _hover={{ borderColor: "green.300" }}>
+          <InputLeftElement
+            pointerEvents="none"
+            mt={1.5}
+            color="gray.400"
+            children={<FaLock />}
+          />
+          <Input
+            size="md"
+            pl={10}
+            type={show ? "text" : "password"}
+            placeholder="Confirmar senha *"
+            _hover={{ borderColor: "green.400" }}
+          />
+        </InputGroup>
 
         <Link
           alignSelf="flex-end"
@@ -128,10 +154,15 @@ export default function Home() {
           color="gray.300"
           fontWeight="bold"
           _hover={{ color: "green.200", transform: "scale(1.02)" }}
+          
         >
-          <Button h="2rem" size="sm" onClick={handleClick}>
-              {show ? "Ocultar Senha" : "Ver Senha"}
-            </Button>
+          <IconButton h="2rem" 
+          onClick={handleClick} 
+          border="solid 2px" 
+          borderRadius="md"
+          borderColor="green.200">
+            {show ? <FaEyeSlash/> : <FaEye/>}
+          </IconButton>
         </Link>
 
         <Button
