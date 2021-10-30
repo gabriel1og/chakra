@@ -10,7 +10,7 @@ import {
   Box,
   Spacer
 } from "@chakra-ui/layout";
-import { MoonIcon } from "@chakra-ui/icons";
+import { DownloadIcon } from "@chakra-ui/icons";
 import { Link } from "@chakra-ui/react";
 import {
   FaSun,
@@ -19,26 +19,73 @@ import {
   FaWhatsapp,
   FaInstagram,
   FaLinkedin,
-  FaDownload
+  FaSnapchat,
+  FaSoundcloud,
+  FaTiktok, 
+  FaFacebook,
+  FaBlackberry,
+  FaGratipay,
+  FaTwitter,
+  FaPinterest,
+  FaReddit,
+  FaSkype,
+  FaTelegram,
+  FaVoicemail,
+  FaBriefcase,
+  FaMailBulk,
+  FaShare,
+  FaShareAlt,
+  FaUserLock,
 } from "react-icons/fa";
+import { BiMailSend } from "react-icons/bi";
 import React from "react";
 import { IconButton } from "@chakra-ui/button";
 import { Avatar, AvatarBadge, AvatarGroup } from "@chakra-ui/react"
 import { Stack } from "@chakra-ui/layout";
+import { Image, Icon } from "@chakra-ui/react"
+import { MdSanitizer } from "react-icons/md"
+import { BsFillBriefcaseFill, BsMailbox } from "react-icons/bs";
+import Wpp from './wpp.jpeg'
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+} from "@chakra-ui/react"
+import { useDisclosure } from "@chakra-ui/hooks";
 
 const IndexPage = () => {
 
   const { colorMode, toggleColorMode } = useColorMode();
   const formBackground = useColorModeValue("gray.100", "gray.700");
+  const backSave = useColorModeValue("gray.400", "black");
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
+    
     <Flex
       height="100vh"
       direction="column"
       alignItems="center"
       justifyContent="center"
+     /* css={{
+        '&::-webkit-scrollbar': {
+          width: "15px"
+        },
+        '&::-webkit-scrollbar-track': {
+          background: `rgb(51, 51, 51)`
+        },
+        '&::-webkit-scrollbar-thumb': {
+          backgroundColor: `rgb(0, 0, 0)`, 
+          borderRadius: '10px',     
+          border: `3px solid rgb(48, 48, 48)` 
+        },
+      }}*/
     >
-      <Heading
-        mt={12}
+      {/*<Heading
         mb={12}
         bgGradient="linear(to-r, blue.200, blue.500, purple.300)"
         bgClip="text"
@@ -62,24 +109,20 @@ const IndexPage = () => {
           mt={-10}
           mr={-10}
         />
-
         <Heading mb={6} display="flex" justifyContent="center">
           Log In
         </Heading>
-
         <Input
           placeholder="eusouotal@email.com"
           variant="filled"
           mb={3}
           type="email"
         />
-
         <Input placeholder="********" variant="filled" mb={2} type="password" />
-
         <HStack mb={6}>
-          <Input width="70%" placeholder="Comentários adicionais..."></Input>
+          <Input w="70%" placeholder="Comentários adicionais..."></Input>
           <Button
-            width="30%"
+            w="30%"
             border="solid"
             borderColor="green.200"
             borderWidth="2px"
@@ -87,9 +130,7 @@ const IndexPage = () => {
             Confirmar
           </Button>
         </HStack>
-
         <Button colorScheme="teal">Log In</Button>
-
         <HStack mt={2} mb={-8} alignSelf="flex-end">
           <Text color="gray.400" fontWeight="bold" fontSize="sm">
             Deseja apagar os seus dados?
@@ -106,63 +147,121 @@ const IndexPage = () => {
           </Button>
         </HStack>
       </Flex>
+      <Divider />*/}
 
-      <Divider />
+      <IconButton
+        icon={colorMode === "dark" ? <FaMoon /> : <FaSun />}
+        id="modos"
+        aria-label="icone"
+        onClick={toggleColorMode}
+        alignSelf="center"
+        p={2}
+        mb={6}
+        mt={4}
+      />
 
       <Flex
         mt={2}
         mb={2}
         direction="row"
         background={formBackground}
-        p={2}
         rounded={10}
         display="flex"
-        width="47.5%"
+        w={['100%','100%','60%','35%']}
         height="16vh"
-        justifyContent="space-between"
         alignItems="center"
-        borderBottom="solid"
-        borderBottomColor="gray.500"
-        borderBottomWidth="6px"
+        border="solid"
+        borderColor="black"
+        borderWidth="3px"
+        boxShadow="0 0 10px #111, 0 0 40px #111, 0 0 10px #111"
       >
-        <Box ml={2}>
-          <Stack direction="row" spacing={4}>
-            <Avatar src="https://bit.ly/sage-adebayo" >
-              <AvatarBadge  boxSize="1.25em" bg="green.500" />
-            </Avatar>
+        <Box>
+          <Stack direction="row">
+            <Image
+              boxSize="150px"
+              
+              height="15.5vh"
+              rounded={10}
+              objectFit="cover"
+              borderRadius="10px"
+              
+              borderRightRadius="1px"
+              borderRight="solid"
+              borderRightWidth="3px"
+              borderRightColor="black"
+              
+              borderTopStartRadius="6px"
+              borderBottomStartRadius="6px"
+              src="https://media-exp1.licdn.com/dms/image/C4D03AQGmrM2M7BgUEA/profile-displayphoto-shrink_800_800/0/1623350715647?e=1640217600&v=beta&t=nldAsSoPPLZvmMvdJm1gT6D6XQ7QQWcM_a36R6zEOxk"
+              alt="Wpp"
+            />
           </Stack>
         </Box>
 
-        <Box ml={2} display="flex" flexDirection="row">
-          <Text>Nome</Text>
-          <Text fontSize="sm">@usuario</Text>
-          <Link justifyContent="flex-end" href="https://www.instagram.com/">
-            Salvar <FaDownload />
-          </Link>
-        </Box>
+        <Flex 
+          direction="column" 
+          m={[3, 6, 6, 6]}
+          display=" flex"
+          justify-content="center" 
+          flex-direction="column" 
+          w="100%" >
+          <Box direction="row" mt={[1, 2, 2, 2]} justifyContent="space-between">
+            
+            <Link 
+              _hover={{transform: "scale(1.12)"}}
+              direction="row" 
+              float="right" 
+              href="#" 
+              p={2} 
+              pl={[1, 2, 2, 2]}
+              pr={[1, 2, 2, 2]}
+              fontFamily="cursive"
+              background={backSave}
+              fontWeight="500"
+              borderRadius="10px">
+              Salvar  <DownloadIcon boxSize={4} />
+            </Link>
+            
+            <Text fontFamily="arial" fontSize={['1rem', '1.1rem', '1.5rem', '1.5rem']}>Gabriel Oliveira</Text>
+            <Text fontSize="sm" mb={6} opacity={0.7}>@gabriel123</Text>
+            
+          </Box>
 
-        <Spacer />
+          <Spacer />
 
-        <Box mr={2}>
+          <Box mr={2}
+            mt={[1, 2, 2, 2]} 
+            display="flex" 
+            flexDirection="row">
+            <BsFillBriefcaseFill/>
+            <Text ml={1} mt={[-1, -1, -2, -1.5]} fontSize={['1rem', '1rem', '1.2rem', '1.1rem']}> Estágiario em Desenvolvimento</Text>
           
-        </Box>
+          </Box>
+        </Flex>
       </Flex>
 
       <Flex
         mt={6}
         mb={2}
-        width="47.5%"
+        w={['100%','100%','60%','35%']}
         height="8vh"
         direction="row"
         background={formBackground}
         p={2}
         rounded={10}
-        display="flex"
         justifyContent="space-between"
         alignItems="center"
-        borderBottom="solid"
+        
+        /* borderBottom="solid"
         borderBottomColor="green.400"
-        borderBottomWidth="3px"
+        borderBottomWidth="3px" */
+
+        borderLeft="solid"
+        borderLeftColor="green.400"
+        borderLeftWidth="3px"
+
+        boxShadow="0 0 10px #111, 0 0 40px #111, 0 0 10px #111"
+        _hover={{transform: "scale(1.02)"}}
       >
         <Box ml={2}>
           <FaWhatsapp size={30}></FaWhatsapp>
@@ -176,7 +275,12 @@ const IndexPage = () => {
         <Spacer />
 
         <Box mr={2}>
-          <Link justifyContent="flex-end" href="https://web.whatsapp.com/">
+          <Link
+           justifyContent="flex-end"
+           href="https://web.whatsapp.com/"
+           _hover={{listStyle: "none"}}
+           fontWeight="700"
+           >
             Acessar
           </Link>
         </Box>
@@ -189,14 +293,15 @@ const IndexPage = () => {
         background={formBackground}
         p={2}
         rounded={10}
-        display="flex"
-        width="47.5%"
+        w={['100%','100%','60%','35%']}
         height="8vh"
         justifyContent="space-between"
         alignItems="center"
         borderBottom="solid"
         borderBottomColor="pink.400"
         borderBottomWidth="3px"
+        boxShadow="0 0 10px #111, 0 0 40px #111, 0 0 10px #111"
+        _hover={{transform: "scale(1.02)"}}
       >
         <Box ml={2}>
           <FaInstagram size={30}></FaInstagram>
@@ -210,7 +315,12 @@ const IndexPage = () => {
         <Spacer />
 
         <Box mr={2}>
-          <Link justifyContent="flex-end" href="https://www.instagram.com/">
+          <Link
+           justifyContent="flex-end"
+           href="https://www.instagram.com/"
+           _hover={{listStyle: "none"}}
+           fontWeight="700"
+           >
             Acessar
           </Link>
         </Box>
@@ -224,13 +334,21 @@ const IndexPage = () => {
         p={2}
         rounded={10}
         display="flex"
-        width="47.5%"
+        w={['100%','100%','60%','35%']}
         height="8vh"
         justifyContent="space-between"
         alignItems="center"
-        borderBottom="solid"
+        
+        /* borderBottom="solid"
         borderBottomColor="blue.400"
-        borderBottomWidth="3px"
+        borderBottomWidth="3px" */
+
+        borderLeft="solid"
+        borderLeftColor="blue.400"
+        borderLeftWidth="3px"
+        
+        boxShadow="0 0 10px #111, 0 0 40px #111, 0 0 10px #111"
+        _hover={{transform: "scale(1.02)"}}
       >
         <Box ml={2}>
           <FaLinkedin size={30}></FaLinkedin>
@@ -244,11 +362,259 @@ const IndexPage = () => {
         <Spacer />
 
         <Box mr={2}>
-          <Link justifyContent="flex-end" href="https://br.linkedin.com/">
+          <Link
+           justifyContent="flex-end"
+           href="https://br.linkedin.com/"
+           _hover={{listStyle: "none"}}
+           fontWeight="700"
+          >
             Acessar
           </Link>
         </Box>
       </Flex>
+
+      <Flex
+        mt={2}
+        mb={2}
+        direction="row"
+        background={formBackground}
+        p={2}
+        rounded={10}
+        display="flex"
+        w={['100%','100%','60%','35%']}
+        height="8vh"
+        justifyContent="space-between"
+        alignItems="center"
+        borderBottom="solid"
+        borderBottomColor="black"
+        borderBottomWidth="3px"
+        boxShadow="0 0 10px #111, 0 0 40px #111, 0 0 10px #111"
+        _hover={{transform: "scale(1.02)"}}
+      >
+        <Box ml={2}>
+          <FaTiktok size={30}></FaTiktok>
+        </Box>
+
+        <Box ml={2}>
+          <Text>Tiktok</Text>
+          <Text fontSize="sm">Tiktok</Text>
+        </Box>
+
+        <Spacer />
+
+        <Box mr={2}>
+          <Link
+           justifyContent="flex-end"
+           href="https://www.tiktok.com/pt-BR/"
+           _hover={{listStyle: "none"}}
+           fontWeight="700"
+          >
+            Acessar
+          </Link>
+        </Box>
+      </Flex>
+
+      <Flex
+        mt={2}
+        mb={2}
+        direction="row"
+        background={formBackground}
+        p={2}
+        rounded={10}
+        display="flex"
+        w={['100%','100%','60%','35%']}
+        height="8vh"
+        justifyContent="space-center"
+        alignItems="center"
+        borderBottom="solid"
+        borderBottomColor="orange.600"
+        borderBottomWidth="3px"
+        boxShadow="0 0 10px #111, 0 0 40px #111, 0 0 10px #111"
+        _hover={{transform: "scale(1.02)"}}
+      >
+        <Box ml={2}>
+          <FaSoundcloud size={30}></FaSoundcloud>
+        </Box>
+
+        <Box ml={2}>
+          <Text>Soundcloud</Text>
+          <Text fontSize="sm">Soundcloud</Text>
+        </Box>
+
+        <Spacer />
+
+        <Box mr={2}>
+          <Link
+           justifyContent="flex-end"
+           href="https://www.snapchat.com/"
+           _hover={{listStyle: "none"}}
+           fontWeight="700"
+          >
+            Acessar
+          </Link>
+        </Box>
+      </Flex>
+
+      <Flex
+        mt={2}
+        mb={2}
+        direction="row"
+        background={formBackground}
+        p={2}
+        rounded={10}
+        display="flex"
+        w={['100%','100%','60%','35%']}
+        height="8vh"
+        justifyContent="space-between"
+        alignItems="center"
+        
+        /* borderBottom="solid"
+        borderBottomColor="blue.500"
+        borderBottomWidth="3px" */
+
+        borderLeft="solid"
+        borderLeftColor="blue.500"
+        borderLeftWidth="3px"
+        
+        boxShadow="0 0 10px #111, 0 0 40px #111, 0 0 10px #111"
+        _hover={{transform: "scale(1.02)"}}
+      >
+        <Box ml={2}>
+          <FaFacebook size={30}></FaFacebook>
+        </Box>
+
+        <Box ml={2}>
+          <Text>Facebook</Text>
+          <Text fontSize="sm">Facebook</Text>
+        </Box>
+
+        <Spacer />
+
+        <Box mr={2}>
+          <Link
+           justifyContent="flex-end"
+           href="https://pt-br.facebook.com/"
+           _hover={{listStyle: "none"}}
+           fontWeight="700"
+          >
+            Acessar
+          </Link>
+        </Box>
+      </Flex>
+
+      <Flex
+        mt={2}
+        mb={2}
+        direction="row"
+        background={formBackground}
+        p={2}
+        rounded={10}
+        display="flex"
+        w={['100%','100%','60%','35%']}
+        height="8vh"
+        justifyContent="space-center"
+        alignItems="center"
+        borderBottom="solid"
+        borderBottomColor="yellow.400"
+        borderBottomWidth="3px"
+        boxShadow="0 0 10px #111, 0 0 40px #111, 0 0 10px #111"
+        _hover={{transform: "scale(1.02)"}}
+      >
+        <Box ml={2}>
+          <FaSnapchat size={30}></FaSnapchat>
+        </Box>
+
+        <Box ml={2}>
+          <Text>Snapchat</Text>
+          <Text fontSize="sm">Snapchat</Text>
+        </Box>
+
+        <Spacer />
+
+        <Box mr={2}>
+          <Link
+           justifyContent="flex-end"
+           href="https://www.snapchat.com/"
+           _hover={{listStyle: "none"}}
+           fontWeight="700"
+          >
+            Acessar
+          </Link>
+        </Box>
+      </Flex>
+
+      <Flex 
+        flexDirection="row"
+        alignItems="center"
+        w={['100%','100%','60%','35%']}
+        justifyContent="space-between"
+        mb={4}
+      >
+      <Button mt={4} mr={4}><FaUserLock/></Button>
+      <Link mt={4} _hover={{listStyle: "none", transform: "scale(1.05)"}}>monocard.com.br</Link>
+      <Button mt={4} onClick={onOpen} ml={4}><FaShareAlt/></Button>
+
+      <Modal isOpen={isOpen} onClose={onClose} isCentered>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader fontSize="1.6rem">Compartilhe seu Monocard</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+           <Flex flexWrap="wrap" mb={6}>
+            <Box p={3} mr={6} width="40%" display="flex" alignItems="center"  _hover={{transform: "scale(1.02)"}}>
+              <FaWhatsapp size={22}></FaWhatsapp>
+              <Link _hover={{listStyle: "none"}} ml={2} fontSize="1.3rem" fontWeight={600}>Whatsapp</Link> 
+            </Box>
+
+            <Box p={3} mr={6} width="40%" display="flex" alignItems="center"  _hover={{transform: "scale(1.02)"}}>
+              <FaFacebook size={22}></FaFacebook>
+              <Link _hover={{listStyle: "none"}} ml={2} fontSize="1.3rem" fontWeight={600}>Facebook</Link>
+            </Box>
+
+            <Box p={3} mr={6} width="40%" display="flex" alignItems="center"  _hover={{transform: "scale(1.02)"}}>
+              <FaTwitter size={22}></FaTwitter>
+              <Link _hover={{listStyle: "none"}} ml={2} fontSize="1.3rem" fontWeight={600}>Twitter</Link>
+            </Box>
+
+            <Box p={3} mr={6} width="40%" display="flex" alignItems="center"  _hover={{transform: "scale(1.02)"}}>
+              <FaLinkedin size={22}></FaLinkedin>
+              <Link _hover={{listStyle: "none"}} ml={2} fontSize="1.3rem" fontWeight={600}>Linkedin</Link>
+            </Box>
+
+            <Box p={3} mr={6} width="40%" display="flex" alignItems="center"  _hover={{transform: "scale(1.02)"}}>
+              <FaPinterest size={22}></FaPinterest>
+              <Link _hover={{listStyle: "none"}} ml={2} fontSize="1.3rem" fontWeight={600}>Pinterest</Link>
+            </Box>
+
+            <Box p={3} mr={6} width="40%" display="flex" alignItems="center"  _hover={{transform: "scale(1.02)"}}>
+              <FaReddit size={22}></FaReddit>
+              <Link _hover={{listStyle: "none"}} ml={2} fontSize="1.3rem" fontWeight={600}>Reddit</Link>
+            </Box>
+
+            <Box p={3} mr={6} width="40%" display="flex" alignItems="center"  _hover={{transform: "scale(1.02)"}}>
+              <FaSkype size={22}></FaSkype>
+              <Link _hover={{listStyle: "none"}} ml={2} fontSize="1.3rem" fontWeight={600}>Skype</Link>
+            </Box>
+
+            <Box p={3} mr={6} width="40%" display="flex" alignItems="center"  _hover={{transform: "scale(1.02)"}}>
+              <FaTelegram size={22}></FaTelegram>
+              <Link _hover={{listStyle: "none"}} ml={2} fontSize="1.3rem" fontWeight={600}>Telegram</Link>
+            </Box>
+
+            <Box p={3} mr={6} width="40%" display="flex" alignItems="center"  _hover={{transform: "scale(1.02)"}}>
+              <BiMailSend size={22}></BiMailSend>
+              <Link _hover={{listStyle: "none"}} ml={2} fontSize="1.3rem" fontWeight={600}>Email</Link>
+            </Box>
+
+            <Box p={3} mr={6} width="40%" display="flex" alignItems="center"  _hover={{transform: "scale(1.02)"}}>
+              <FaInstagram size={22}></FaInstagram>
+              <Link _hover={{listStyle: "none"}} ml={2} fontSize="1.3rem" fontWeight={600}>Instagram</Link>
+            </Box>
+           </Flex>
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+    </Flex>
     </Flex>
   );
 };
